@@ -1,4 +1,3 @@
-
 ├── blog-repo/					<--- Carpeta del Repositorio
 │ ├── blog/					    <--- Carpeta del proyecto Django
 │ │ ├── apps/					<--- Aplicaciones Django
