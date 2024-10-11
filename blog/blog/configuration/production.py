@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOST = ['127.0.0.1', 'localhost'] #aqui deberia agregarse el dominio de la pagina noticias.com ej
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost'] #aqui deberia agregarse el dominio de la pagina noticias.com ej
 
 # Hay que cambiar el engine por django.db.backends.postgresql o .mysql  
 # dependiendo de que lenguaje se use a la hora de deployar

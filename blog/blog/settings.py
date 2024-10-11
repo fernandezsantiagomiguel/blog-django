@@ -7,6 +7,6 @@ load_dotenv()
 DJANGO_ENV =os.getenv('DJANGO_ENV','development')
 
 if DJANGO_ENV == 'production':
-    from .configurations.production import *
+    from .configuration.production import *
 else:
-    from .configurations.local import * 
+    from .configuration.local import * 
