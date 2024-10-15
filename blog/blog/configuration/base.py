@@ -12,18 +12,21 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+# AUTH
+LOGIN_REDIRECT_URL = reverse_lazy('Inicio')
+LOGOUT_REDIRECT_URL = reverse_lazy('Inicio')
+LOGIN_URL = reverse_lazy('login')   
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
-
-
+SECRET_KEY = os.getenv('SECRET_KEY'),
 
 # Application definition
 
@@ -34,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'apps.Post',
+    'apps.Users',
+    'ckeditor',
+    'apps.Comentarios',
+    'apps.contactos',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -64,10 +73,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'blog.wsgi.application'
-
-
-
+WSGI_APPLICATION = 'blog.wsgi.application',
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -97,6 +103,8 @@ TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
 
@@ -104,13 +112,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
-STATIC_ROOT =[os.path.join(BASE_DIR,'staticfiles')]
+# DESARROLLO
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# PRODUCCION
+# Cuando ejecutamos collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT =os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = "Users.CustomUser"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#SMT
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER ='blog.info.cambio.climatico@gmail.com'
+EMAIL_HOST_PASSWORD = 'twlr jxwi dihu eozj'
+EMAIL_USE_SSL = False

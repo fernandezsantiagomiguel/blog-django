@@ -15,15 +15,56 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from . import views
+from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-]
-
-if settings.DEBUG:
-    from django.conf.urls.static import static
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    
+    path("admin/", admin.site.urls),
+    path("", views.Home, name="Inicio"),
+    path("contactos/", include("apps.contactos.urls"), name="Contacto"),
+    # APP NOTICIAS
+    path("Post/", include("apps.Post.urls")),
+    # LOGIN Y LOGOUT
+    path(
+        "login/",
+        auth_views.LoginView.as_view(template_name="Users/login.html"),
+        name="login",
+    ),
+    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+    path(
+        "reset_password/",
+        views.CustomPasswordResetView.as_view(
+            template_name="Users/Acceso/password_reset.html"
+        ),
+        name="password_reset",
+    ),
+    path(
+        "reset_password_sent/",
+        auth_views.PasswordResetDoneView.as_view(
+            template_name="Users/Acceso/password_reset_sent.html"
+        ),
+        name="password_reset_done",
+    ),
+    path(
+        "reset/<uidb64>/<token>/",
+        auth_views.PasswordResetConfirmView.as_view(
+            template_name="Users/Acceso/password_reset_form.html"
+        ),
+        name="password_reset_confirm",
+    ),
+    path(
+        "reset_password_complete/",
+        auth_views.PasswordResetCompleteView.as_view(
+            template_name="Users/Acceso/password_reset_done.html"
+        ),
+        name="password_reset_complete",
+    ),
+    # APP USUARIOs
+    path("Users/", include("apps.Users.urls")),
+    # APP Comentarios
+    path("Comentarios/", include("apps.Comentarios.urls")),
+    path("acercade/", views.Acercade, name="acercade"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

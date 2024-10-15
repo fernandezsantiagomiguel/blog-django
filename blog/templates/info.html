@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% load static %} {% block contenido %}
+  <div class="container my-3 rounded-5" style="background-color: aliceblue">
+    <div class="row">
+      <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 rounded-5" style="
+        background-image: url'{% static img/imagen5.jpg %}';
+        background-repeat: no-repeat;
+        background-size: cover;"></div>
+      <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
+        <h1 style="color: hwb(128 1% 78%)">Acerca de nosotros</h1>
+        <br />
+        <h3 style="color: hwb(128 1% 78%)">Saludos, somos un blog dedicado a la difusión de noticias sobre el mundo del automovilismo</h3>
+        <br />
+        <p>Nuestra meta es mantenerte informado sobre las novedades tecnológicas que se desarrollan en la industria automovilistica actualmente.</p>
+        <p>Enterate de cuales son los nuevos modelos de tus marcas favoritas y sus nuevas funcionalidades, ademas conoce hacia donde se posiciona la vision de la industria.</p>
+        <p>Consistimos en un grupo de programadores que desean compartir su amor y pasion por los autos veloces y eficientes.</p>
+        <p>¡Ponte el cinturón y comparte nuestra pasión sobre esta industria que no deja de sorprendernos!.</p>
+
+        <h3 style="color: hwb(128 1% 78%)">El Equipo</h3>
+        <p>Los pilotos de nuestro equipo son:</p>
+        <ul>
+          <li><strong>Fernandez Matias:</strong> <a href="https://github.com/MatiasAFernandez">Github</a></li>
+          <li><strong>:</strong><a href="">Github</a></li>
+          <li><strong>:</strong><a href="">Github</a></li>
+          <li><strong>:</strong><a href="">Github</a></li>
+        </ul>
+
+        <p>Nuestro lema es "La innovación y la imaginación nos hace avanzar sobre cuatro ruedas".</p>
+        <!-- Puedes agregar más detalles según sea necesario -->
+      </div>
+    </div>
+  </div>
+
+  <style>
+    body
+      {
+      background: #8a2387; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #f27121, #e94057, #8a2387);
+      background: linear-gradient(to right, #f27121, #e94057, #8a2387);
+    }
+  </style>
+{% endblock %}

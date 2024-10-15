@@ -2,12 +2,13 @@ from .base import *
 
 DEBUG = True
 
-ALLOWED_HOST = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 DATABASES = {
-    'default':{
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
 }
-os.environ['DJANGO_PORT'] = '5000'
+
+os.environ['DJANGO_PORT'] = '3000'

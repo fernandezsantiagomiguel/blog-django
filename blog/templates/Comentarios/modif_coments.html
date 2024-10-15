@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+
+  <div class="mx-auto text-center">
+        <form action="" method="post">{% csrf_token %}         
+         <h3 class="mb-4">MODIFICAR COMENTARIO:</h3>
+          {{form.as_p}}
+          <button type="submit" class="btn btn-primary mb-4">Confirmar</button>
+        </form>
+     
+  </div>
+
+{% endblock contenido %}

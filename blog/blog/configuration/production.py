@@ -2,19 +2,31 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOST = ['127.0.0.1', 'localhost'] #aqui deberia agregarse el dominio de la pagina noticias.com ej
+# TODO: Dejar solo el dominio de produccion
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-# Hay que cambiar el engine por django.db.backends.postgresql o .mysql 
-# dependiendo de que lenguaje se use a la hora de deployar
+# TODO: Cambiar la config de la base de datos para la produccion
 DATABASES = {
-    'default':{
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    #NAME :os.gatenv('DB_NAME'),
-    #USER:-----------('DB_USER'),
-    #PASSWORD:-----------('DB_PASSWORD'),
-    #HOST:-----------(DB_HOST),
-    #PORT:-----------('DB_PORT'),
+        'NAME': BASE_DIR / 'db.sqlite3'
+
+        # En caso de usar postgresql
+        # 'ENGINE': 'django.db.backends.postgresql'
+
+        # En caso de usar mysql
+        # 'ENGINE': 'django.db.backends.mysql'
+
+        # ''NAME': os.getenv('DB_NAME') 
+
+        # 'USER': os.getenv('DB_USER')
+
+        # 'PASSWORD': os.getenv('DB_PASSWORD')
+
+        # 'HOST': os.getenv('DB_HOST')
+
+        # 'PORT': os.getenv('DB_PORT')
     }
 }
+
 os.environ['DJANGO_PORT'] = '8080'

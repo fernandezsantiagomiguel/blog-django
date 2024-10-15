@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block contenido %}
+<header class="mosthead img-fluid position-relative"
+  style="background-image: url'{% static img/imagen3.jpg %}';">
+  <div class=" container position-relative px-4 px-lg-5">
+    <div class="overlay"></div>
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div class="post-heading text-center">
+          {% if user.is_authenticated %}
+          <h1 class="fw-bolder" style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">{{ user.username }}
+            Bienvenido a Cook with Friends </h1>
+          {% else %}
+            <h1 class="fw-bolder" style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Bienvenido a Cook with Friends</h1>
+          {% endif %}
+            <p class="lead mb-0" style="color: rgb(0, 0, 0); text-shadow: 4px 4px 8px rgba(255, 255, 255, 0.9);">
+           Aprende y comparte tus recetas favoritas con la comunidad.
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
+</header>
+<div>
+
+  <section id="scroll">
+    <div class="container px-5">
+      <div class="row gx-5 align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5"><img class="img-fluid rounded-circle"
+              src="{% static 'img/imagen1.jpg' %}" alt="..." /></div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4">¡Explora Cook with Friends!</h2>
+            <p>Maravillate con los platillos mas deliciosos, explora y comparte con el resto del mundo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container px-5">
+      <div class="row gx-5 align-items-center">
+        <div class="col-lg-6">
+          <div class="p-5"><img class="img-fluid rounded-circle"
+              src="{% static 'img/imagen2.jpg' %}" alt="..." /></div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-5">
+            <h2 class="display-4">Te damos la bienvenida</h2>
+            <p>¿Te gusta cocinar? Vuelte el maestro de la cocina  </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 3 -->
+  <section>
+    <div class="container px-5">
+      <div class="row gx-5 align-items-center">
+        <div class="col-lg-6 order-lg-2">
+          <div class="p-5">
+            <img class="img-fluid rounded-circle"
+              src="{% static 'img/imagen4.jpg' %}" alt="..." />
+          </div>
+        </div>
+        <div class="col-lg-6 order-lg-1">
+          <div class="p-5">
+            <h2 class="display-4">¡Pisa el pedal!</h2>
+            <p>Nuestro equipo se asegurara que tengas la informacion necesaria para crear los platillos mas deliciosos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock contenido %}
