@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.db import models
 
 
 def Agregar_Comentario(request, pk):
@@ -61,3 +62,7 @@ class ModificaComentario(UpdateView):
             )
             return redirect("noticias:detalle_noticia", pk=comentario.noticia.pk)
         return super().dispatch(request, *args, **kwargs)
+    
+class Comentarios(models.Model):
+     title = models.CharField(max_length=100)
+     content = models.TextField()

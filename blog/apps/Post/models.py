@@ -35,3 +35,7 @@ class Noticia(models.Model):
             ('can_manage_noticias', 'can manage noticias'),
             ('can_manage_comentarios', 'Can manage comentarios'),
         ]
+
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
